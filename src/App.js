@@ -5,7 +5,7 @@ function App() {
   return (
     <div id='background'>
       <div id='board'>
-        <Chessboard id="BasicBoard" />
+        <Chessboard id="BasicBoard" boardWidth={750}/>
       </div>
     </div>
   );
