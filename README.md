@@ -1,4 +1,4 @@
-# Chess game in react 
+# React chess
 
 A chess game made with react-chessboard and Chess.js
 
