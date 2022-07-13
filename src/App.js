@@ -1,12 +1,13 @@
 import './App.css';
 import {PlayRandomMove} from "./RandomGame"
+import { Puzzle } from './Puzzle';
 
 function App() {
 
   return (
     <div id='background'>
       <div id='board'>
-        <PlayRandomMove/>
+        <Puzzle/>
       </div>
     </div>
   );

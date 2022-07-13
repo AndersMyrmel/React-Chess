@@ -3,7 +3,7 @@ import { Chessboard } from "react-chessboard";
 import { Chess } from 'chess.js'
 
 export function PlayRandomMove(){
-    const [game, setGame] = useState(new Chess());
+  const [game, setGame] = useState(new Chess());
 
   function safeGameMutate(modify) {
     setGame((g) => {
