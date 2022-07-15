@@ -2,30 +2,40 @@ import { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from 'chess.js'
 
-const FEN = '2r3k1/R1P2pp1/1p1p3p/1r2p3/4P3/8/6PP/2R3K1 w - - 3 33'
+const FEN = '6k1/3qb1pp/4p3/ppp1P3/8/2PP1Q2/PP4PP/5RK1 w - - 0 1'
 const WMOVES = [
     {
     "color": "w",
-    "from": "a7",
-    "to": "b7",
-    "flags": "n",
-    "piece": "r",
-    "san": "Rb7"
+    "from": "f3",
+    "to": "f7",
+    },
+    {
+      "color": "w",
+      "from": "f7",
+      "to": "f8",
+    },
+    {
+      "color": "w",
+      "from": "f1",
+      "to": "f8",
     },
 ]
 const BMOVES = [
     {
         "color": "b",
         "from": "g8",
-        "to": "h7",
-        "flags": "n",
-        "piece": "k",
-        "san": "Kh7"
+        "to": "h8",
+    },
+    {
+      "color": "b",
+      "from": "e7",
+      "to": "f8",
     },
 ]
 
 export function Puzzle(){
     const [game, setGame] = useState(new Chess(FEN));
+    const [count, setCount] = useState(0);
 
     function safeGameMutate(modify) {
         setGame((g) => {
@@ -35,8 +45,26 @@ export function Puzzle(){
         });
       }
 
-    function checkMove(){
-        
+    function checkMove(game, move, count){
+      if (count >= BMOVES.length){
+        console.log('ferdig');
+        return;
+      }
+      if (move.from === WMOVES[count].from && move.to === WMOVES[count].to){
+        console.log('Correct move');
+        computerMove(game, count);
+    }
+  }
+
+    function computerMove(game, count){
+      if (game.game_over() || game.in_draw())
+      return; // exit if the game is over
+
+      safeGameMutate((game) => {
+        game.move({from: BMOVES[count].from,
+            to: BMOVES[count].to});
+      })
+      setCount(count+1);
     }
 
     function onDrop(sourceSquare, targetSquare) {
@@ -49,15 +77,8 @@ export function Puzzle(){
         });
         
         if (move === null) return false; // illegal move
-        if (move.from === WMOVES[0].from && move.to === WMOVES[0].to){
-            console.log('Correct move');
-            setTimeout(safeGameMutate((game) => {
-                game.move({from: BMOVES[0].from,
-                    to: BMOVES[0].to});
-              }), 200);
-        }
-        
-        //setTimeout(makeRandomMove, 200);
+
+        checkMove(game, move, count)
         return true;
       }
 
