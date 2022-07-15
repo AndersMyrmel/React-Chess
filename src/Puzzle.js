@@ -47,18 +47,19 @@ export function Puzzle(){
 
     function checkMove(game, move, count){
       if (count >= BMOVES.length){
-        console.log('ferdig');
+        console.log('Puzzle finished');
         return;
       }
       if (move.from === WMOVES[count].from && move.to === WMOVES[count].to){
         console.log('Correct move');
-        computerMove(game, count);
+        computerCorrectMove(game, count);
     }
   }
 
-    function computerMove(game, count){
-      if (game.game_over() || game.in_draw())
-      return; // exit if the game is over
+    function computerCorrectMove(game, count){
+      if (game.game_over() || game.in_draw()){
+        return; // exit if the game is over
+      }
 
       safeGameMutate((game) => {
         game.move({from: BMOVES[count].from,
