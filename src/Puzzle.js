@@ -46,21 +46,17 @@ export function Puzzle(){
       }
 
     function checkMove(game, move, count){
-      if (count >= BMOVES.length){
-        console.log('Puzzle finished');
-        return;
-      }
       if (move.from === WMOVES[count].from && move.to === WMOVES[count].to){
         console.log('Correct move');
         computerCorrectMove(game, count);
+      }
+      
     }
-  }
 
     function computerCorrectMove(game, count){
       if (game.game_over() || game.in_draw()){
         return; // exit if the game is over
       }
-
       safeGameMutate((game) => {
         game.move({from: BMOVES[count].from,
             to: BMOVES[count].to});
@@ -78,7 +74,6 @@ export function Puzzle(){
         });
         
         if (move === null) return false; // illegal move
-
         checkMove(game, move, count)
         return true;
       }
