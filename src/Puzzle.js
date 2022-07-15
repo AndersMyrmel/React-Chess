@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from 'chess.js'
 
-const FEN = '6k1/3qb1pp/4p3/ppp1P3/8/2PP1Q2/PP4PP/5RK1 w - - 0 1'
+const FEN = '6k1/3qb1pp/4p3/ppp1P3/8/2PP1Q2/PP4PP/5RK1 w - - 0 1' // FEN notation for the starting board
 const WMOVES = [
     {
     "color": "w",
@@ -34,9 +34,10 @@ const BMOVES = [
 ]
 
 export function Puzzle(){
-    const [game, setGame] = useState(new Chess(FEN));
-    const [count, setCount] = useState(0);
+    const [game, setGame] = useState(new Chess(FEN)); // Game state
+    const [count, setCount] = useState(0); // Number of right moves played
 
+    // Function to update game state
     function safeGameMutate(modify) {
         setGame((g) => {
           const update = { ...g };
@@ -45,17 +46,19 @@ export function Puzzle(){
         });
       }
 
+    // Checks wheter the played move is the correct move
     function checkMove(game, move, count){
       if (move.from === WMOVES[count].from && move.to === WMOVES[count].to){
         console.log('Correct move');
+        // If the move is correct, calls the computerCorrectMove function to play the next computer move
         computerCorrectMove(game, count);
       }
-      
     }
 
+    // Make next computer move upon correct player move
     function computerCorrectMove(game, count){
       if (game.game_over() || game.in_draw()){
-        return; // exit if the game is over
+        return console.log('Puzzle completed'); // exit if the game is over
       }
       safeGameMutate((game) => {
         game.move({from: BMOVES[count].from,
@@ -74,7 +77,7 @@ export function Puzzle(){
         });
         
         if (move === null) return false; // illegal move
-        checkMove(game, move, count)
+        checkMove(game, move, count);
         return true;
       }
 
