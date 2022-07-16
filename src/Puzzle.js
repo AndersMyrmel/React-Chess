@@ -59,7 +59,7 @@ export function Puzzle(){
     // Make next computer move upon correct player move
     function correctMove(game, count){
       if (game.game_over() || game.in_draw()){
-        return console.log('Puzzle completed'); // exit if the game is over
+        return console.log('Puzzle completed'); // Exit if the game is over
       }
       safeGameMutate((game) => {
         game.move({from: BMOVES[count].from,
