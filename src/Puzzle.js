@@ -50,8 +50,12 @@ export function Puzzle(){
     function checkMove(game, move, count){
       if (move.from === WMOVES[count].from && move.to === WMOVES[count].to){
         console.log('Correct move');
-        // If the move is correct, calls the computerCorrectMove function to play the next computer move
-        computerCorrectMove(game, count);
+        computerCorrectMove(game, count); // If the move is correct call the function to play the next computer move
+        return true;
+      }
+      else{
+        console.log('Wrong move, try again');
+        setGame(Chess(FEN)); // Reset board if wrong move is played
       }
     }
 
