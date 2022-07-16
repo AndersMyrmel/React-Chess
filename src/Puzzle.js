@@ -51,7 +51,6 @@ export function Puzzle(){
       if (move.from === WMOVES[count].from && move.to === WMOVES[count].to){
         console.log('Correct move');
         computerCorrectMove(game, count); // If the move is correct call the function to play the next computer move
-        return true;
       }
       else{
         console.log('Wrong move, try again');
@@ -81,7 +80,6 @@ export function Puzzle(){
             to: targetSquare,
           });
         });
-        
         if (move === null) return false; // illegal move
         checkMove(game, move, count);
         return true;
