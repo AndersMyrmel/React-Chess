@@ -56,6 +56,7 @@ export function Puzzle(){
       else{
         console.log('Wrong move, try again');
         setGame(Chess(FEN)); // Reset board if wrong move is played
+        setCount(0);
       }
     }
 
