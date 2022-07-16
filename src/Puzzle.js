@@ -67,6 +67,7 @@ export function Puzzle(){
       setCount(count+1);
     }
 
+    // Function for handling piece movement
     function onDrop(sourceSquare, targetSquare) {
         let move = null;
         safeGameMutate((game) => {
