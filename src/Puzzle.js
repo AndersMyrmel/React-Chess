@@ -85,7 +85,7 @@ export function Puzzle(){
             to: targetSquare,
           });
         });
-        if (move === null) return false; // illegal move
+        if (move === null) return false; // Illegal move
         checkMove(game, move, count);
         return true;
       }
