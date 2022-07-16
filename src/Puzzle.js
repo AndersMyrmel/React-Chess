@@ -49,18 +49,15 @@ export function Puzzle(){
     // Checks wheter the played move is the correct move
     function checkMove(game, move, count){
       if (move.from === WMOVES[count].from && move.to === WMOVES[count].to){
-        console.log('Correct move');
-        computerCorrectMove(game, count); // If the move is correct call the function to play the next computer move
+        correctMove(game, count); // If the move is correct call the function to play the next computer move
       }
       else{
-        console.log('Wrong move, try again');
-        setGame(Chess(FEN)); // Reset board if wrong move is played
-        setCount(0);
+        incorrectMove();
       }
     }
 
     // Make next computer move upon correct player move
-    function computerCorrectMove(game, count){
+    function correctMove(game, count){
       if (game.game_over() || game.in_draw()){
         return console.log('Puzzle completed'); // exit if the game is over
       }
@@ -68,7 +65,15 @@ export function Puzzle(){
         game.move({from: BMOVES[count].from,
             to: BMOVES[count].to});
       })
+      console.log('Correct move');
       setCount(count+1);
+    }
+
+    // Player makes incorrect move
+    function incorrectMove(){
+      console.log('Incorrect move, try again');
+      setGame(Chess(FEN)); // Reset board if wrong move is played
+      setCount(0);
     }
 
     // Function for handling piece movement
