@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from 'chess.js'
