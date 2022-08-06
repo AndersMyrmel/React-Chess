@@ -10,14 +10,16 @@ export function CustomStreak(){
   const [visualGame, setVisualGame] = useState(new Chess(FEN));
   const [game, setGame] = useState(new Game(FEN));
 
+  // Function to parse result data from engine to four digit string
   function getLastDigits(str) {
     return str.split('bestmove')[1].trim();   
   }
 
+  // Get the best move from lozza engine from fen string
   function getBestMove(fen){
-    let lozza = new Worker('/lozza.js');
-    lozza.postMessage('position fen ' + fen);
-    lozza.postMessage('go depth 14');
+    let lozza = new Worker('/lozza.js'); // Inititate web worker, communicate using the UCI protocol
+    lozza.postMessage('position fen ' + fen); // Feed fen position 
+    lozza.postMessage('go depth 14'); // 14 Ply search 
 
     return new Promise((resolve) => {
       lozza.onmessage = function(e){
@@ -31,9 +33,9 @@ export function CustomStreak(){
   async function handleClick () {
     let bestMove = await getBestMove(FEN);
     console.log(bestMove);
-    return bestMove;
   };
 
+  // Function for updating visual chessboard
   function safeGameMutate(modify) {
     setVisualGame((g) => {
       const update = { ...g };
