@@ -1,11 +1,11 @@
-#background{
-  background-color: #202020;
-  height: 100vh;
+#background {
+	background-color: #202020;
+	height: 100vh;
 }
 
-#board{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#board {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
