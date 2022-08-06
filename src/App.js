@@ -4,7 +4,7 @@ import { PlayRandomMove } from "./Components/RandomGame.js";
 import { Puzzle } from "./Components/Puzzle.js";
 import { CustomStreak } from "./Components/CustomStreak.js";
 
-function App() {
+const App = () => {
 	return (
 		<div id="background">
 			<div id="board">
@@ -12,6 +12,6 @@ function App() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default App;

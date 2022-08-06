@@ -2,30 +2,30 @@ import React, { useState, useEffect } from "react";
 import { Game, move, status, moves, aiMove, getFen } from "js-chess-engine";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
-import { getBestMove } from "../services/getBestMove.js";
+import { getBestMove } from "../Services/getBestMove.js";
 import "../Engine/lozza.js";
 
 const FEN = "6k1/3qb1pp/4p3/ppp1P3/8/2PP1Q2/PP4PP/5RK1 w - - 0 1";
 
-export function CustomStreak() {
+export const CustomStreak = () => {
 	const [visualGame, setVisualGame] = useState(new Chess(FEN));
 	const [game, setGame] = useState(new Game(FEN));
 
-	async function handleClick() {
+	const handleClick = async () => {
 		let bestMove = await getBestMove(FEN);
 		console.log(bestMove);
-	}
+	};
 
 	// Update visual chessboard
-	function safeGameMutate(modify) {
+	const safeGameMutate = (modify) => {
 		setVisualGame((g) => {
 			const update = { ...g };
 			modify(update);
 			return update;
 		});
-	}
+	};
 
-	function onDrop(sourceSquare, targetSquare) {
+	const onDrop = (sourceSquare, targetSquare) => {
 		let visualMove = null;
 		safeGameMutate((game) => {
 			visualMove = game.move({
@@ -45,7 +45,7 @@ export function CustomStreak() {
 			visualGame.move({ from: computerFrom, to: computerTo });
 		});
 		return true;
-	}
+	};
 
 	if (visualGame.game_over() || visualGame.in_draw())
 		// Move this
@@ -57,4 +57,4 @@ export function CustomStreak() {
 			<button onClick={handleClick}>Next Move</button>
 		</div>
 	);
-}
+};
