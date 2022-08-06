@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import {PlayRandomMove} from "./RandomGame"
-import { Puzzle } from './Puzzle';
-import { ChessEngine } from './Engine';
+import {PlayRandomMove} from "./Components/RandomGame.js"
+import { Puzzle } from './Components/Puzzle.js';
+import { CustomStreak } from './Components/CustomStreak.js';
+
 
 function App() {
-
   return (
     <div id='background'>
       <div id='board'>
-        <ChessEngine/>
+        <CustomStreak/>
       </div>
     </div>
   );
