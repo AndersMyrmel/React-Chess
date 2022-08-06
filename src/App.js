@@ -5,13 +5,13 @@ import { Puzzle } from "./Components/Puzzle.js";
 import { CustomStreak } from "./Components/CustomStreak.js";
 
 const App = () => {
-	return (
-		<div id="background">
-			<div id="board">
-				<CustomStreak />
-			</div>
-		</div>
-	);
+  return (
+    <div id="background">
+      <div id="board">
+        <CustomStreak />
+      </div>
+    </div>
+  );
 };
 
 export default App;
