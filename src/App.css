@@ -1,6 +1,10 @@
 #background {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	background-color: #202020;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 #board {
@@ -11,14 +15,9 @@
 }
 
 #inputText {
-	position: absolute;
-	bottom: 360px;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
 	text-align: center;
 	color: #779556;
+	padding: 40px;
 }
 
 #inputHeader {
@@ -26,7 +25,9 @@
 }
 
 #inputContainer {
-	height: 200px;
+	display: flex;
+	height: 440px;
+	padding: 80px;
 }
 
 #button-section {
@@ -44,7 +45,6 @@
 	border-radius: 5px;
 	color: white;
 	text-align: center;
-	text-decoration: none;
 	font-size: 16px;
 }
 

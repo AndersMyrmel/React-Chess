@@ -8,14 +8,10 @@ import { InputFen } from './Components/InputFen.js';
 
 const App = () => {
 	return (
-		<div id="background">
-			<div id="board">
-				<Routes>
-					<Route path="/" element={<InputFen />} />
-					<Route path="CustomStreak" element={<CustomStreak />} />
-				</Routes>
-			</div>
-		</div>
+		<Routes>
+			<Route path="/" element={<InputFen />} />
+			<Route path="CustomStreak" element={<CustomStreak />} />
+		</Routes>
 	);
 };
 

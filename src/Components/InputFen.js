@@ -38,7 +38,7 @@ export const InputFen = () => {
 	};
 
 	return (
-		<div>
+		<div id="background">
 			<div id="inputText">
 				<h1 id="inputHeader">Create your own puzzle streak!</h1>
 				<p>
@@ -95,4 +95,5 @@ const inputStyle = {
 	width: 800,
 	bottom: 50,
 	color: 'white',
+	padding: 5,
 };
