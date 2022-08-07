@@ -9,3 +9,39 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.inputContainer {
+	height: 200px;
+}
+
+.button-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#addButton {
+	background-color: #779556;
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+#submitButton {
+	background-color: #202020;
+	width: 150px;
+	height: 50px;
+	border-radius: 5px;
+	border: 1px solid;
+	margin-top: 10px;
+	border-color: #779556;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+}
