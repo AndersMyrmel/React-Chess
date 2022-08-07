@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export const FenContext = createContext([]);
+export const FenContext = createContext({});
