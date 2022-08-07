@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Input from '@mui/material/Input';
 import { useNavigate } from 'react-router-dom';
+import { routeChange } from '../Services/routeChange.js';
 import '../App.css';
 
 export const InputFen = () => {
 	const [fields, setFields] = useState(['']);
 	const [count, setCount] = useState(1);
+	let navigate = useNavigate();
 
 	const handleChange = (i, event) => {
 		const values = [...fields];
@@ -24,17 +26,15 @@ export const InputFen = () => {
 		setCount(count + 1);
 	};
 
-	const submitHandler = (event) => {
-		event.preventDefault();
+	// On Submit button click
+	const handleSubmit = () => {
 		console.log(fields);
-		routeChange(); // Redirect page to Custom streak puzzle site
+		routeChange(navigate, `CustomStreak`); // Redirect page to Custom streak puzzle site
 	};
 
-	// Navigate page using react router v6
-	let navigate = useNavigate();
-	const routeChange = () => {
-		let path = `CustomStreak`;
-		navigate(path);
+	// Update form
+	const formHandler = (event) => {
+		event.preventDefault();
 	};
 
 	return (
@@ -55,8 +55,8 @@ export const InputFen = () => {
 				</p>
 			</div>
 
-			<div className="inputContainer">
-				<form onSubmit={submitHandler}>
+			<div id="inputContainer">
+				<form onSubmit={formHandler}>
 					{fields.map((field, idx) => {
 						return (
 							<div className="form-inline" key={`${idx}`}>
@@ -73,11 +73,15 @@ export const InputFen = () => {
 							</div>
 						);
 					})}
-					<div className="button-section">
-						<button id="addButton" onClick={() => handleAdd()}>
+					<div id="button-section">
+						<button id="addButton" type="button" onClick={() => handleAdd()}>
 							Add
 						</button>
-						<button id="submitButton" type="submit">
+						<button
+							id="submitButton"
+							type="button"
+							onClick={() => handleSubmit()}
+						>
 							Submit
 						</button>
 					</div>

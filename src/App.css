@@ -25,11 +25,11 @@
 	align-items: center;
 }
 
-.inputContainer {
+#inputContainer {
 	height: 200px;
 }
 
-.button-section {
+#button-section {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
