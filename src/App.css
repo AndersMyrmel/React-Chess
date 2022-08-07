@@ -10,6 +10,21 @@
 	transform: translate(-50%, -50%);
 }
 
+#inputText {
+	position: absolute;
+	bottom: 360px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: #779556;
+}
+
+#inputHeader {
+	align-items: center;
+}
+
 .inputContainer {
 	height: 200px;
 }
@@ -23,8 +38,8 @@
 
 #addButton {
 	background-color: #779556;
-	width: 150px;
-	height: 50px;
+	width: 120px;
+	height: 40px;
 	border: none;
 	border-radius: 5px;
 	color: white;
@@ -35,8 +50,8 @@
 
 #submitButton {
 	background-color: #202020;
-	width: 150px;
-	height: 50px;
+	width: 120px;
+	height: 40px;
 	border-radius: 5px;
 	border: 1px solid;
 	margin-top: 10px;
