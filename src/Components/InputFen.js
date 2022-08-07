@@ -7,7 +7,7 @@ import '../App.css';
 
 export const InputFen = () => {
 	const [fields, setFields] = useState(['']);
-	const [value, setValue] = useContext(FenContext);
+	const [fen, setFen] = useContext(FenContext);
 	const [count, setCount] = useState(1);
 	let navigate = useNavigate();
 
@@ -30,7 +30,7 @@ export const InputFen = () => {
 
 	// On Submit button click
 	const handleSubmit = () => {
-		setValue(fields); // Set fenContext equal to input fields
+		setFen(fields); // Set fenContext equal to input fields
 		routeChange(navigate, `CustomStreak`); // Redirect page to Custom streak puzzle site
 	};
 

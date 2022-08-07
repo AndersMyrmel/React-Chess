@@ -6,10 +6,11 @@ import { FenContext } from './Context/FenContext.js';
 import './App.css';
 
 const App = () => {
-	const [value, setValue] = useState([]);
-	const providerValue = useMemo(() => [value, setValue], [value, setValue]);
+	const [fen, setFen] = useState([]);
+	const value = useMemo(() => [fen, setFen], [fen, setFen]);
+
 	return (
-		<FenContext.Provider value={providerValue}>
+		<FenContext.Provider value={value}>
 			<Routes>
 				<Route path="/" element={<InputFen />} />
 				<Route path="CustomStreak" element={<CustomStreak />} />
