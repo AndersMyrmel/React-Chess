@@ -51,7 +51,7 @@ export const InputFen = () => {
 					are satisfied with the number of puzzles.
 				</p>
 				<p>
-					Make sure it's the notation for the starting layout of the puzzle.
+					Make sure the notation represents the starting layout of the puzzle.
 				</p>
 			</div>
 
