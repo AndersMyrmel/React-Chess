@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Game, move, status, moves, aiMove, getFen } from 'js-chess-engine';
+import React, { useContext, useState } from 'react';
+import { Game } from 'js-chess-engine';
 import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
 import { getBestMove } from '../Services/getBestMove.js';
+import { FenContext } from '../Context/FenContext.js';
 import '../Engine/lozza.js';
 
 const FEN = '6k1/3qb1pp/4p3/ppp1P3/8/2PP1Q2/PP4PP/5RK1 w - - 0 1';
@@ -10,10 +11,12 @@ const FEN = '6k1/3qb1pp/4p3/ppp1P3/8/2PP1Q2/PP4PP/5RK1 w - - 0 1';
 export const CustomStreak = () => {
 	const [visualGame, setVisualGame] = useState(new Chess(FEN));
 	const [game, setGame] = useState(new Game(FEN));
+	const fenList = useContext(FenContext);
 
 	const handleClick = async () => {
 		let bestMove = await getBestMove(FEN);
 		console.log(bestMove);
+		console.log(fenList);
 	};
 
 	// Update visual chessboard
@@ -52,7 +55,7 @@ export const CustomStreak = () => {
 		return console.log('Game over'); // exit if the game is over
 
 	return (
-		<div>
+		<div id="background">
 			<Chessboard position={visualGame.fen()} onPieceDrop={onDrop} />
 			<button onClick={handleClick}>Next Move</button>
 		</div>
