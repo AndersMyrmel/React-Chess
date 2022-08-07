@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Input from '@mui/material/Input';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 export const InputFen = () => {
@@ -26,6 +27,14 @@ export const InputFen = () => {
 	const submitHandler = (event) => {
 		event.preventDefault();
 		console.log(fields);
+		routeChange(); // Redirect page to Custom streak puzzle site
+	};
+
+	// Navigate page using react router v6
+	let navigate = useNavigate();
+	const routeChange = () => {
+		let path = `CustomStreak`;
+		navigate(path);
 	};
 
 	return (
