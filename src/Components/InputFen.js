@@ -3,7 +3,7 @@ import Input from '@mui/material/Input';
 import { useNavigate } from 'react-router-dom';
 import { routeChange } from '../Services/routeChange.js';
 import { FenContext } from '../Context/FenContext.js';
-import '../App.css';
+import '../Styles/App.css';
 
 export const InputFen = () => {
 	const [fields, setFields] = useState(['']); // Input field string array state
@@ -39,7 +39,7 @@ export const InputFen = () => {
 	};
 
 	return (
-		<div id="background">
+		<div className="background">
 			<div id="inputText">
 				<h1 id="inputHeader">Create your own puzzle streak!</h1>
 				<p>

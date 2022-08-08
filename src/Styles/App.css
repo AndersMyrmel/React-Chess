@@ -1,4 +1,4 @@
-#background {
+.background {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -7,71 +7,11 @@
 	min-height: 100vh;
 }
 
-#board {
+.board {
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
-
-#topRow {
-	margin-top: 200px;
-	padding: 30px;
-}
-
-#topRowChildren {
-	width: 100%;
-	height: 100%;
-}
-
-#bottomRow {
-	margin-bottom: 150px;
-}
-
-#customStreakText {
-	position: relative;
-	font-size: 45px;
-	color: #d1d5db;
-	left: 120px;
-	top: 50px;
-}
-
-#createYourOwnText {
-	position: relative;
-	font-size: 20px;
-	color: #cbd5e0;
-	left: 120px;
-	top: 30px;
-}
-
-#playText {
-	position: relative;
-	font-size: 30px;
-	color: #d1d5db;
-	left: 120px;
-	top: 320px;
-}
-
-#arrowSymbol {
-	position: relative;
-	font-size: 30px;
-	color: #d1d5db;
-	left: 195px;
-	top: 261px;
-	transition-duration: 0.1s;
-}
-
-#topRowChildren:hover #arrowSymbol {
-	padding-left: 5px;
-	transition-duration: 0.1s;
-}
-
-#boardIllustration {
-	position: relative;
-	height: 350px;
-	left: 540px;
-	bottom: 95px;
-	border-radius: 10px;
 }
 
 #inputText {

@@ -68,7 +68,7 @@ export const CustomStreak = () => {
 		return console.log('Game over'); // exit if the game is over
 
 	return (
-		<div id="background">
+		<div className="background">
 			<Chessboard position={visualGame.fen()} onPieceDrop={onDrop} />
 			<button onClick={handleClick}>Next Move</button>
 		</div>

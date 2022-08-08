@@ -4,7 +4,7 @@ import { HomeComponent } from './Components/HomeComponent.js';
 import { CustomStreak } from './Components/CustomStreak.js';
 import { InputFen } from './Components/InputFen.js';
 import { FenContext } from './Context/FenContext.js';
-import './App.css';
+import './Styles/App.css';
 
 const App = () => {
 	const [fen, setFen] = useState([]);
