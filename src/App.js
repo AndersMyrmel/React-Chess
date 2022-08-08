@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { HomeComponent } from './Components/HomeComponent.js';
 import { CustomStreak } from './Components/CustomStreak.js';
 import { InputFen } from './Components/InputFen.js';
 import { FenContext } from './Context/FenContext.js';
-import './App.css';
+import './Styles/App.css';
 
 const App = () => {
 	const [fen, setFen] = useState([]);
@@ -12,8 +13,9 @@ const App = () => {
 	return (
 		<FenContext.Provider value={value}>
 			<Routes>
-				<Route path="/" element={<InputFen />} />
-				<Route path="CustomStreak" element={<CustomStreak />} />
+				<Route path="/" element={<HomeComponent />} />
+				<Route path="input-fen" element={<InputFen />} />
+				<Route path="custom-streak" element={<CustomStreak />} />
 			</Routes>
 		</FenContext.Provider>
 	);

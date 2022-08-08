@@ -1,0 +1,96 @@
+#topRow {
+	margin-top: 200px;
+	margin-bottom: 20px;
+}
+
+.paperChildren {
+	width: 100%;
+	height: 100%;
+}
+
+#bottomRow {
+	display: flex;
+	margin-bottom: 150px;
+	flex-direction: row;
+	column-gap: 18px;
+}
+
+#customStreakText {
+	position: relative;
+	font-size: 45px;
+	color: #d1d5db;
+	left: 120px;
+	top: 50px;
+}
+
+#createYourOwnText {
+	position: relative;
+	font-size: 20px;
+	color: #cbd5e0;
+	left: 120px;
+	top: 30px;
+}
+
+#playText {
+	position: relative;
+	font-size: 30px;
+	color: #d1d5db;
+	left: 120px;
+	top: 320px;
+}
+
+#arrowSymbol {
+	position: relative;
+	font-size: 30px;
+	color: #d1d5db;
+	left: 195px;
+	top: 263px;
+	transition-duration: 0.1s;
+}
+
+.paperChildren:hover #arrowSymbol {
+	padding-left: 6px;
+	transition-duration: 0.1s;
+}
+
+#boardIllustration {
+	position: relative;
+	height: 350px;
+	left: 540px;
+	bottom: 95px;
+	border-radius: 10px;
+}
+
+#chessVisionText {
+	position: relative;
+	font-size: 35px;
+	color: #d1d5db;
+	left: 80px;
+	top: 40px;
+	word-spacing: 9999999px;
+}
+
+#bottomLeftIllustration {
+	position: relative;
+	height: 400px;
+	left: 330px;
+	bottom: 115px;
+	border-radius: 10px;
+}
+
+#forceMateText {
+	position: relative;
+	font-size: 35px;
+	color: #d1d5db;
+	left: 80px;
+	top: 40px;
+	word-spacing: 9999999px;
+}
+
+#bottomRightIllustration {
+	position: relative;
+	height: 400px;
+	left: 330px;
+	bottom: 115px;
+	border-radius: 10px;
+}
