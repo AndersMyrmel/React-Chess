@@ -30,7 +30,7 @@ export const InputFen = () => {
 	// On Submit button click
 	const handleSubmit = () => {
 		setFen(fields); // Set fenContext equal to input fields
-		routeChange(navigate, `CustomStreak`); // Redirect page to Custom streak puzzle site
+		routeChange(navigate, `/custom-streak`); // Redirect page to Custom streak puzzle site
 	};
 
 	// Update form
