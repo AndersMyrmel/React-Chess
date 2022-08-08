@@ -4,6 +4,7 @@ import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
 import { getBestMove } from '../Services/getBestMove.js';
 import { FenContext } from '../Context/FenContext.js';
+import { validateFen } from '../Services/fenValidation.js';
 import '../Engine/lozza.js';
 
 const FEN = [
@@ -20,10 +21,9 @@ export const CustomStreak = () => {
 
 	// Update the visual chessboard on first render and everytime fenlist or count changes
 	useEffect(() => {
-		if (fenList[0][count] != FEN[0]) {
-			return alert('Error');
-		}
-		setVisualGame(Chess(fenList[0][count]));
+		validateFen(fenList[0][count]) // Check wheter the current FEN notation is valid
+			? setVisualGame(Chess(fenList[0][count]))
+			: alert('Invalid fen');
 	}, [fenList, count]);
 
 	const handleClick = async () => {
