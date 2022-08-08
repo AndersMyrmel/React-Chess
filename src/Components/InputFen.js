@@ -6,9 +6,9 @@ import { FenContext } from '../Context/FenContext.js';
 import '../App.css';
 
 export const InputFen = () => {
-	const [fields, setFields] = useState(['']);
-	const [fen, setFen] = useContext(FenContext);
-	const [count, setCount] = useState(1);
+	const [fields, setFields] = useState(['']); // Input field string array state
+	const [fen, setFen] = useContext(FenContext); // Contains array of FEN positions for customstreak component
+	const [count, setCount] = useState(1); // Counter for restricting max input fields to 10
 	let navigate = useNavigate();
 
 	const handleChange = (i, event) => {
@@ -19,8 +19,7 @@ export const InputFen = () => {
 
 	const handleAdd = () => {
 		if (count > 9) {
-			alert('Max ten entries');
-			return;
+			return alert('Max ten entries');
 		}
 		const values = [...fields];
 		values.push('');
