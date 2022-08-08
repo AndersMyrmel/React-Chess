@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Game } from 'js-chess-engine';
 import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
-import { getBestMove } from '../Services/getBestMove.js';
 import { FenContext } from '../Context/FenContext.js';
+import { getBestMove } from '../Services/getBestMove.js';
 import { validateFen } from '../Services/fenValidation.js';
 import '../Engine/lozza.js';
 
@@ -19,7 +19,7 @@ export const CustomStreak = () => {
 	const [count, setCount] = useState(0); // Counter for traversing fenList
 	const fenList = useContext(FenContext); // List of FEN positions from InputFen
 
-	// Update the visual chessboard on first render and everytime fenlist or count changes
+	// Update the visual chessboard on first render and whenever fenlist or count changes
 	useEffect(() => {
 		validateFen(fenList[0][count]) // Check wheter the current FEN notation is valid
 			? setVisualGame(Chess(fenList[0][count]))
@@ -63,8 +63,8 @@ export const CustomStreak = () => {
 		return true;
 	};
 
+	// Move this
 	if (visualGame.game_over() || visualGame.in_draw())
-		// Move this
 		return console.log('Game over'); // exit if the game is over
 
 	return (
