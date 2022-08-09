@@ -3,6 +3,7 @@ import Input from '@mui/material/Input';
 import { useNavigate } from 'react-router-dom';
 import { routeChange } from '../Services/routeChange.js';
 import { FenContext } from '../Context/FenContext.js';
+import { Header } from '../Components/Header.js';
 import '../Styles/App.css';
 
 export const InputFen = () => {
@@ -40,6 +41,7 @@ export const InputFen = () => {
 
 	return (
 		<div className="background">
+			<Header />
 			<div id="inputText">
 				<h1 id="inputHeader">Create your own puzzle streak!</h1>
 				<p>
@@ -68,7 +70,7 @@ export const InputFen = () => {
 										':after': { borderBottomColor: '#779556' },
 									}}
 									onChange={(e) => handleChange(idx, e)}
-									style={inputStyle}
+									style={{ width: 800, bottom: 50, color: 'white', padding: 5 }}
 								/>
 							</div>
 						);
@@ -89,11 +91,4 @@ export const InputFen = () => {
 			</div>
 		</div>
 	);
-};
-
-const inputStyle = {
-	width: 800,
-	bottom: 50,
-	color: 'white',
-	padding: 5,
 };

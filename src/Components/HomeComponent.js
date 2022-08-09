@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 import { routeChange } from '../Services/routeChange.js';
+import { Header } from '../Components/Header.js';
 import '../Styles/HomePage.css';
 
 export const HomeComponent = () => {
@@ -10,18 +11,20 @@ export const HomeComponent = () => {
 
 	return (
 		<div className="background">
+			<Header />
 			<div id="topRow">
 				<Box
 					sx={{
 						display: 'flex',
 						flexWrap: 'row',
+						border: '3px solid transparent',
 						'& > :not(style)': {
 							width: 1200,
 							height: 600,
 							borderRadius: 1,
 						},
 						'&:hover': {
-							border: '3px solid #15e577',
+							borderColor: '#15e577',
 							transitionDuration: '0.1s',
 							borderRadius: 1,
 							cursor: 'pointer',
@@ -30,9 +33,6 @@ export const HomeComponent = () => {
 				>
 					<Paper
 						style={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
 							backgroundColor: '#2e2e2e',
 						}}
 						children={
@@ -60,13 +60,14 @@ export const HomeComponent = () => {
 					sx={{
 						display: 'flex',
 						flexWrap: 'row',
+						border: '2px solid transparent',
 						'& > :not(style)': {
 							width: 590,
-							height: 450,
+							height: 420,
 							borderRadius: 1,
 						},
 						'&:hover': {
-							border: '2px solid #15e577',
+							borderColor: '#15e577',
 							transitionDuration: '0.1s',
 							borderRadius: 1,
 							cursor: 'pointer',
@@ -74,7 +75,9 @@ export const HomeComponent = () => {
 					}}
 				>
 					<Paper
-						style={{ backgroundColor: '#2e2e2e' }}
+						style={{
+							backgroundColor: '#2e2e2e',
+						}}
 						children={
 							<div className="paperChildren">
 								<h1 id="chessVisionText">Chess Vision</h1>
@@ -92,13 +95,14 @@ export const HomeComponent = () => {
 					sx={{
 						display: 'flex',
 						flexWrap: 'row',
+						border: '2px solid transparent',
 						'& > :not(style)': {
 							width: 590,
-							height: 450,
+							height: 420,
 							borderRadius: 1,
 						},
 						'&:hover': {
-							border: '2px solid #15e577',
+							borderColor: '#15e577',
 							transitionDuration: '0.1s',
 							borderRadius: 1,
 							cursor: 'pointer',
@@ -106,7 +110,9 @@ export const HomeComponent = () => {
 					}}
 				>
 					<Paper
-						style={{ backgroundColor: '#2e2e2e' }}
+						style={{
+							backgroundColor: '#2e2e2e',
+						}}
 						children={
 							<div className="paperChildren">
 								<h1 id="forceMateText">Forced Mate</h1>

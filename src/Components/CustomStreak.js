@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Game } from 'js-chess-engine';
 import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
+import { Header } from '../Components/Header.js';
 import { FenContext } from '../Context/FenContext.js';
 import { getBestMove } from '../Services/getBestMove.js';
 import { validateFen } from '../Services/fenValidation.js';
+import '../Styles/App.css';
 import '../Engine/lozza.js';
 
 const FEN = [
@@ -69,8 +71,11 @@ export const CustomStreak = () => {
 
 	return (
 		<div className="background">
-			<Chessboard position={visualGame.fen()} onPieceDrop={onDrop} />
-			<button onClick={handleClick}>Next Move</button>
+			<Header />
+			<div className="board">
+				<Chessboard position={visualGame.fen()} onPieceDrop={onDrop} />
+				<button onClick={handleClick}>Next Move</button>
+			</div>
 		</div>
 	);
 };
