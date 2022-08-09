@@ -1,6 +1,5 @@
 #topRow {
 	margin-top: 100px;
-	margin-bottom: 20px;
 }
 
 .paperChildren {
@@ -10,7 +9,8 @@
 
 #bottomRow {
 	display: flex;
-	margin-bottom: 150px;
+	margin-top: 20px;
+	margin-bottom: 180px;
 	flex-direction: row;
 	column-gap: 18px;
 }
