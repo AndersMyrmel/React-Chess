@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 import { routeChange } from '../Services/routeChange.js';
+import { Header } from '../Components/Header.js';
 import '../Styles/HomePage.css';
 
 export const HomeComponent = () => {
@@ -10,6 +11,7 @@ export const HomeComponent = () => {
 
 	return (
 		<div className="background">
+			<Header />
 			<div id="topRow">
 				<Box
 					sx={{

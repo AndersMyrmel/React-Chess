@@ -1,6 +1,8 @@
+import React from 'react';
 import { useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
+import { Header } from '../Components/Header.js';
 
 const FEN = '6k1/3qb1pp/4p3/ppp1P3/8/2PP1Q2/PP4PP/5RK1 w - - 0 1'; // FEN notation for the starting board
 const WMOVES = [
@@ -88,5 +90,10 @@ export const Puzzle = () => {
 		return true;
 	};
 
-	return <Chessboard position={game.fen()} onPieceDrop={onDrop} />;
+	return (
+		<div className="background">
+			<Header />
+			<Chessboard position={game.fen()} onPieceDrop={onDrop} />;
+		</div>
+	);
 };

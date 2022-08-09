@@ -1,0 +1,37 @@
+.Header {
+	width: 1200px;
+	padding: 40px 10px;
+}
+
+.Nav {
+	display: flex;
+	justify-content: space-between;
+}
+
+.Nav a {
+	color: white;
+	text-decoration: none;
+	font-size: 30px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	display: inline-block;
+	position: relative;
+}
+
+.Nav a:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #15e577;
+	transform-origin: bottom right;
+	transition: transform 0.15s ease-out;
+}
+
+.Nav a:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
