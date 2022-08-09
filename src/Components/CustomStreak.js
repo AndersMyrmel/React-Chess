@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Game } from 'js-chess-engine';
 import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
 import { Header } from '../Components/Header.js';
-import { FenContext } from '../Context/FenContext.js';
 import { getBestMove } from '../Services/getBestMove.js';
 import { validateFen } from '../Services/fenValidation.js';
 import '../Styles/App.css';

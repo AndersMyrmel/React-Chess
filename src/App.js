@@ -1,9 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HomeComponent } from './Components/HomeComponent.js';
 import { CustomStreak } from './Components/CustomStreak.js';
 import { InputFen } from './Components/InputFen.js';
-import { FenContext } from './Context/FenContext.js';
 import './Styles/App.css';
 
 const App = () => {

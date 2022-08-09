@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Input from '@mui/material/Input';
 import { useNavigate } from 'react-router-dom';
 import { routeChange } from '../Services/routeChange.js';
-import { FenContext } from '../Context/FenContext.js';
 import { Header } from '../Components/Header.js';
 import '../Styles/App.css';
 
