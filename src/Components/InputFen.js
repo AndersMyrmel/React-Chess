@@ -1,14 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Input from '@mui/material/Input';
 import { useNavigate } from 'react-router-dom';
 import { routeChange } from '../Services/routeChange.js';
-import { FenContext } from '../Context/FenContext.js';
 import { Header } from '../Components/Header.js';
 import '../Styles/App.css';
 
-export const InputFen = () => {
+export const InputFen = ({ setFenList }) => {
 	const [fields, setFields] = useState(['']); // Input field string array state
-	const [fen, setFen] = useContext(FenContext); // Contains array of FEN positions for customstreak component
 	const [count, setCount] = useState(1); // Counter for restricting max input fields to 10
 	let navigate = useNavigate();
 
@@ -30,7 +28,7 @@ export const InputFen = () => {
 
 	// On Submit button click
 	const handleSubmit = () => {
-		setFen(fields); // Set fenContext equal to input fields
+		setFenList(fields); // Set fenContext equal to input fields
 		routeChange(navigate, `/custom-streak`); // Redirect page to Custom streak puzzle site
 	};
 

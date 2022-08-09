@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Game } from 'js-chess-engine';
 import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
 import { Header } from '../Components/Header.js';
-import { FenContext } from '../Context/FenContext.js';
 import { getBestMove } from '../Services/getBestMove.js';
 import { validateFen } from '../Services/fenValidation.js';
 import '../Styles/App.css';
@@ -15,23 +14,22 @@ const FEN = [
 	'B7/K1B1p1Q1/5r2/7p/1P1kp1bR/3P3R/1P1NP3/2n5 w - - 0 1',
 ];
 
-export const CustomStreak = () => {
+export const CustomStreak = ({ fenList }) => {
 	const [visualGame, setVisualGame] = useState(new Chess()); // Visual chessboard state
 	const [game, setGame] = useState(new Game(FEN)); // Engine game state
 	const [count, setCount] = useState(0); // Counter for traversing fenList
-	const fenList = useContext(FenContext); // List of FEN positions from InputFen
 
 	// Update the visual chessboard on first render and whenever fenlist or count changes
 	useEffect(() => {
-		validateFen(fenList[0][count]) // Check wheter the current FEN notation is valid
-			? setVisualGame(Chess(fenList[0][count]))
+		validateFen(fenList[count]) // Check wheter the current FEN notation is valid
+			? setVisualGame(Chess(fenList[count]))
 			: alert('Invalid fen');
 	}, [fenList, count]);
 
 	const handleClick = async () => {
 		let bestMove = await getBestMove(FEN);
 		console.log(bestMove);
-		count >= fenList[0].length - 1 ? setCount(0) : setCount(count + 1);
+		count >= fenList.length - 1 ? setCount(0) : setCount(count + 1);
 	};
 
 	// Update visual chessboard
