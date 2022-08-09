@@ -64,7 +64,7 @@ export const HomeComponent = () => {
 						flexWrap: 'row',
 						'& > :not(style)': {
 							width: 590,
-							height: 450,
+							height: 420,
 							borderRadius: 1,
 						},
 						'&:hover': {
@@ -96,7 +96,7 @@ export const HomeComponent = () => {
 						flexWrap: 'row',
 						'& > :not(style)': {
 							width: 590,
-							height: 450,
+							height: 420,
 							borderRadius: 1,
 						},
 						'&:hover': {

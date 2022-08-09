@@ -1,5 +1,5 @@
 #topRow {
-	margin-top: 200px;
+	margin-top: 100px;
 	margin-bottom: 20px;
 }
 
@@ -72,7 +72,7 @@
 
 #bottomLeftIllustration {
 	position: relative;
-	height: 400px;
+	height: 370px;
 	left: 330px;
 	bottom: 115px;
 	border-radius: 10px;
@@ -89,7 +89,7 @@
 
 #bottomRightIllustration {
 	position: relative;
-	height: 400px;
+	height: 370px;
 	left: 330px;
 	bottom: 115px;
 	border-radius: 10px;
