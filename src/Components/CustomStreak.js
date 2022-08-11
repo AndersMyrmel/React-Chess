@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Game } from 'js-chess-engine';
 import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
 import { Header } from '../Components/Header.js';
@@ -15,26 +14,38 @@ const FEN = [
 ];
 
 export const CustomStreak = ({ fenList }) => {
-	const [visualGame, setVisualGame] = useState(new Chess()); // Visual chessboard state
-	const [game, setGame] = useState(new Game(FEN)); // Engine game state
+	const [game, setGame] = useState(new Chess());
 	const [count, setCount] = useState(0); // Counter for traversing fenList
 
 	// Update the visual chessboard on first render and whenever fenlist or count changes
 	useEffect(() => {
 		validateFen(fenList[count]) // Check wheter the current FEN notation is valid
-			? setVisualGame(Chess(fenList[count]))
-			: alert('Invalid fen');
+			? setGame(Chess(fenList[count]))
+			: console.log('Invalid fen');
 	}, [fenList, count]);
 
 	const handleClick = async () => {
-		let bestMove = await getBestMove(FEN);
-		console.log(bestMove);
-		count >= fenList.length - 1 ? setCount(0) : setCount(count + 1);
+		//let bestMove = await getBestMove(FEN);
+		//console.log(bestMove);
+		//count >= fenList.length - 1 ? setCount(0) : setCount(count + 1);
+
+		const move = makeAMove({
+			from: 'f3',
+			to: 'f7',
+			promotion: 'q', // always promote to a queen for example simplicity
+		});
 	};
+
+	function makeAMove(move) {
+		const gameCopy = { ...game };
+		const result = gameCopy.move(move);
+		setGame(gameCopy);
+		return result; // null if the move was illegal, the move object if the move was legal
+	}
 
 	// Update visual chessboard
 	const safeGameMutate = (modify) => {
-		setVisualGame((g) => {
+		setGame((g) => {
 			const update = { ...g };
 			modify(update);
 			return update;
@@ -42,36 +53,24 @@ export const CustomStreak = ({ fenList }) => {
 	};
 
 	const onDrop = (sourceSquare, targetSquare) => {
-		let visualMove = null;
+		let move = null;
 		safeGameMutate((game) => {
-			visualMove = game.move({
+			move = game.move({
 				from: sourceSquare,
 				to: targetSquare,
-				promotion: 'q',
+				promotion: 'q', // always promote to a queen for example simplicity
 			});
 		});
-		if (visualMove === null) return false; // Check for illegal move
+		if (move === null) return false; // illegal move
 
-		game.move(sourceSquare, targetSquare);
-		let computerMove = game.aiMove(3);
-		let computerFrom = Object.keys(computerMove).toString().toLowerCase();
-		let computerTo = Object.values(computerMove).toString().toLowerCase();
-		setGame(game);
-		safeGameMutate((visualGame) => {
-			visualGame.move({ from: computerFrom, to: computerTo });
-		});
 		return true;
 	};
-
-	// Move this
-	if (visualGame.game_over() || visualGame.in_draw())
-		return console.log('Game over'); // exit if the game is over
 
 	return (
 		<div className="background">
 			<Header />
 			<div className="board">
-				<Chessboard position={visualGame.fen()} onPieceDrop={onDrop} />
+				<Chessboard position={game.fen()} onPieceDrop={onDrop} />
 				<button onClick={handleClick}>Next Move</button>
 			</div>
 		</div>
