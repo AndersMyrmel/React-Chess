@@ -16,34 +16,54 @@ const FEN = [
 export const CustomStreak = ({ fenList }) => {
 	const [game, setGame] = useState(new Chess());
 	const [count, setCount] = useState(0); // Counter for traversing fenList
+	const [currentPosition, setCurrentPosition] = useState();
 
-	// Update the visual chessboard on first render and whenever fenlist or count changes
+	// Update the chess game on first render and whenever fenlist or count changes
 	useEffect(() => {
+		setCurrentPosition(fenList[count]);
 		validateFen(fenList[count]) // Check wheter the current FEN notation is valid
 			? setGame(Chess(fenList[count]))
 			: console.log('Invalid fen');
 	}, [fenList, count]);
 
 	const handleClick = async () => {
-		let bestMove = await getBestMove(fenList[count]);
-		console.log(bestMove);
 		//count >= fenList.length - 1 ? setCount(0) : setCount(count + 1);
-
-		const move = makeAMove({
-			from: bestMove[0],
-			to: bestMove[1],
-			promotion: 'q', // always promote to a queen for example simplicity
-		});
+		setGame(Chess(fenList[count]));
+		setCurrentPosition(fenList[count]);
 	};
 
-	function makeAMove(move) {
+	// Check wheter the played move is the correct move
+	const checkMove = async (move) => {
+		if (game.game_over() || game.in_draw()) {
+			return console.log('Puzzle Finished');
+		}
+
+		let bestMove = await getBestMove(currentPosition);
+
+		if ((move.from === bestMove[0]) & (move.to === bestMove[1])) {
+			let engineMove = await getBestMove(game.fen());
+			console.log(engineMove);
+			makeAMove({
+				from: engineMove[0],
+				to: engineMove[1],
+				promotion: 'q', // always promote to a queen for example simplicity
+			});
+
+			setCurrentPosition(game.fen());
+		} else {
+			setGame(Chess(fenList[count]));
+			setCurrentPosition(fenList[count]);
+		}
+	};
+
+	const makeAMove = (move) => {
 		const gameCopy = { ...game };
 		const result = gameCopy.move(move);
 		setGame(gameCopy);
 		return result; // null if the move was illegal, the move object if the move was legal
-	}
+	};
 
-	// Update visual chessboard
+	// Update game on piece move
 	const safeGameMutate = (modify) => {
 		setGame((g) => {
 			const update = { ...g };
@@ -52,7 +72,8 @@ export const CustomStreak = ({ fenList }) => {
 		});
 	};
 
-	const onDrop = (sourceSquare, targetSquare) => {
+	// Move chess piece
+	const onDrop = async (sourceSquare, targetSquare) => {
 		let move = null;
 		safeGameMutate((game) => {
 			move = game.move({
@@ -62,7 +83,7 @@ export const CustomStreak = ({ fenList }) => {
 			});
 		});
 		if (move === null) return false; // illegal move
-
+		checkMove(move);
 		return true;
 	};
 
@@ -71,7 +92,7 @@ export const CustomStreak = ({ fenList }) => {
 			<Header />
 			<div className="board">
 				<Chessboard position={game.fen()} onPieceDrop={onDrop} />
-				<button onClick={handleClick}>Next Move</button>
+				<button onClick={handleClick}>Reset</button>
 			</div>
 		</div>
 	);
