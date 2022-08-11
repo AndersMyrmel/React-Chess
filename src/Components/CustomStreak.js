@@ -25,13 +25,13 @@ export const CustomStreak = ({ fenList }) => {
 	}, [fenList, count]);
 
 	const handleClick = async () => {
-		//let bestMove = await getBestMove(FEN);
-		//console.log(bestMove);
+		let bestMove = await getBestMove(fenList[count]);
+		console.log(bestMove);
 		//count >= fenList.length - 1 ? setCount(0) : setCount(count + 1);
 
 		const move = makeAMove({
-			from: 'f3',
-			to: 'f7',
+			from: bestMove[0],
+			to: bestMove[1],
 			promotion: 'q', // always promote to a queen for example simplicity
 		});
 	};
