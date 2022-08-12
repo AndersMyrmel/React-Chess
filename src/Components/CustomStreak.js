@@ -15,11 +15,10 @@ const FEN = [
 
 export const CustomStreak = ({ fenList }) => {
 	const [game, setGame] = useState(new Chess());
-	const [count, setCount] = useState(0);
-	const [currentPosition, setCurrentPosition] = useState();
-	const [moveSquares, setMoveSquares] = useState({});
+	const [count, setCount] = useState(0); // Counter for traversing fen list
+	const [currentPosition, setCurrentPosition] = useState(); // Current fen position
 	const [rightClickedSquares, setRightClickedSquares] = useState({});
-	const [optionSquares, setOptionSquares] = useState({});
+	const [optionSquares, setOptionSquares] = useState({}); // Show a piece's valid moves on hover
 
 	// Update the chess game whenever fenlist or count changes
 	useEffect(() => {
@@ -165,7 +164,6 @@ export const CustomStreak = ({ fenList }) => {
 					customLightSquareStyle={{ backgroundColor: '#ebecd0' }}
 					customDarkSquareStyle={{ backgroundColor: '#779756' }}
 					customSquareStyles={{
-						...moveSquares,
 						...optionSquares,
 						...rightClickedSquares,
 					}}
