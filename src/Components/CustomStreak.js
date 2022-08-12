@@ -32,31 +32,6 @@ export const CustomStreak = ({ fenList }) => {
 		setCurrentPosition(fenList[count]);
 	};
 
-	// Check wheter the played move is the correct move
-	const checkMove = async (move) => {
-		if (game.game_over() || game.in_draw()) {
-			count >= fenList.length - 1
-				? console.log(' All puzzles finished, well done')
-				: setCount(count + 1);
-			return console.log('Puzzle Finished');
-		}
-
-		let [bestMoveFrom, bestMoveTo] = await getBestMove(currentPosition);
-		console.log(bestMoveFrom, bestMoveTo);
-		if ((move.from === bestMoveFrom) & (move.to === bestMoveTo)) {
-			let [opponentFrom, opponentTo] = await getBestMove(game.fen());
-			makeAMove({
-				from: opponentFrom,
-				to: opponentTo,
-				promotion: 'q', // Auto promote to a queen for simplicity
-			});
-			setCurrentPosition(game.fen());
-		} else {
-			setGame(Chess(fenList[count]));
-			setCurrentPosition(fenList[count]);
-		}
-	};
-
 	// Make computer move
 	const makeAMove = (move) => {
 		const gameCopy = { ...game };
@@ -65,7 +40,7 @@ export const CustomStreak = ({ fenList }) => {
 		return result; // null if the move was illegal, the move object if the move was legal
 	};
 
-	// Update game on piece move
+	// Update game state on piece move
 	const safeGameMutate = (modify) => {
 		setGame((g) => {
 			const update = { ...g };
@@ -81,12 +56,40 @@ export const CustomStreak = ({ fenList }) => {
 			move = game.move({
 				from: sourceSquare,
 				to: targetSquare,
-				promotion: 'q', // always promote to a queen for example simplicity
+				promotion: 'q', // Auto promote to a queen for simplicity
 			});
 		});
 		if (move === null) return false; // illegal move
 		checkMove(move);
 		return true;
+	};
+
+	// Check wheter the played move is the correct move
+	const checkMove = async (move) => {
+		if (game.game_over() || game.in_draw()) {
+			// If game is currently in checkmate or stalemate current puzzle is completed
+			count >= fenList.length - 1 // If count is larger then length of fenlist all puzzles are completed
+				? console.log(' All puzzles finished, well done')
+				: setCount(count + 1);
+			return console.log('Puzzle Finished');
+		}
+
+		let [bestMoveFrom, bestMoveTo] = await getBestMove(currentPosition); // Get best move in current position from lozza engine
+
+		if ((move.from === bestMoveFrom) & (move.to === bestMoveTo)) {
+			// Compare best move to played move
+			let [opponentFrom, opponentTo] = await getBestMove(game.fen());
+			makeAMove({
+				// Play opponents move
+				from: opponentFrom,
+				to: opponentTo,
+				promotion: 'q', // Auto promote to a queen for simplicity
+			});
+			setCurrentPosition(game.fen());
+		} else {
+			setGame(Chess(fenList[count])); // Reset if played move did not equal the engine suggestion
+			setCurrentPosition(fenList[count]);
+		}
 	};
 
 	// Clear marked squares on left click
