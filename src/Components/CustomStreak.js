@@ -15,19 +15,20 @@ const FEN = [
 
 export const CustomStreak = ({ fenList }) => {
 	const [game, setGame] = useState(new Chess());
-	const [count, setCount] = useState(0); // Counter for traversing fenList
+	const [count, setCount] = useState(0);
 	const [currentPosition, setCurrentPosition] = useState();
+	const [moveSquares, setMoveSquares] = useState({});
+	const [rightClickedSquares, setRightClickedSquares] = useState({});
+	const [optionSquares, setOptionSquares] = useState({});
 
-	// Update the chess game on first render and whenever fenlist or count changes
+	// Update the chess game whenever fenlist or count changes
 	useEffect(() => {
-		setCurrentPosition(fenList[count]);
 		validateFen(fenList[count]) // Check wheter the current FEN notation is valid
-			? setGame(Chess(fenList[count]))
+			? setGame(Chess(fenList[count]), setCurrentPosition(fenList[count]))
 			: console.log('Invalid fen');
 	}, [fenList, count]);
 
 	const handleClick = async () => {
-		//count >= fenList.length - 1 ? setCount(0) : setCount(count + 1);
 		setGame(Chess(fenList[count]));
 		setCurrentPosition(fenList[count]);
 	};
@@ -35,20 +36,21 @@ export const CustomStreak = ({ fenList }) => {
 	// Check wheter the played move is the correct move
 	const checkMove = async (move) => {
 		if (game.game_over() || game.in_draw()) {
+			count >= fenList.length - 1
+				? console.log(' All puzzles finished, well done')
+				: setCount(count + 1);
 			return console.log('Puzzle Finished');
 		}
 
-		let bestMove = await getBestMove(currentPosition);
-
-		if ((move.from === bestMove[0]) & (move.to === bestMove[1])) {
-			let engineMove = await getBestMove(game.fen());
-			console.log(engineMove);
+		let [bestMoveFrom, bestMoveTo] = await getBestMove(currentPosition);
+		console.log(bestMoveFrom, bestMoveTo);
+		if ((move.from === bestMoveFrom) & (move.to === bestMoveTo)) {
+			let [opponentFrom, opponentTo] = await getBestMove(game.fen());
 			makeAMove({
-				from: engineMove[0],
-				to: engineMove[1],
-				promotion: 'q', // always promote to a queen for example simplicity
+				from: opponentFrom,
+				to: opponentTo,
+				promotion: 'q', // Auto promote to a queen for simplicity
 			});
-
 			setCurrentPosition(game.fen());
 		} else {
 			setGame(Chess(fenList[count]));
@@ -56,6 +58,7 @@ export const CustomStreak = ({ fenList }) => {
 		}
 	};
 
+	// Make computer move
 	const makeAMove = (move) => {
 		const gameCopy = { ...game };
 		const result = gameCopy.move(move);
@@ -87,11 +90,86 @@ export const CustomStreak = ({ fenList }) => {
 		return true;
 	};
 
+	// Clear marked squares on left click
+	const onSquareClick = () => {
+		setRightClickedSquares({});
+	};
+
+	// Mark squares red on right click
+	const onSquareRightClick = (square) => {
+		const colour = '#cf6e53';
+		setRightClickedSquares({
+			...rightClickedSquares,
+			[square]:
+				rightClickedSquares[square] &&
+				rightClickedSquares[square].backgroundColor === colour
+					? undefined
+					: { backgroundColor: colour },
+		});
+	};
+
+	// Show valid moves on piece hover
+	const onMouseOverSquare = (square) => {
+		getMoveOptions(square);
+	};
+
+	// Only set squares to {} if not already set to {}
+	const onMouseOutSquare = () => {
+		if (Object.keys(optionSquares).length !== 0) setOptionSquares({});
+	};
+
+	// Get valid moves for piece on hover
+	const getMoveOptions = (square) => {
+		const moves = game.moves({
+			square,
+			verbose: true,
+		});
+		if (moves.length === 0) {
+			return;
+		}
+		const newSquares = {};
+		moves.map((move) => {
+			newSquares[move.to] = {
+				background:
+					game.get(move.to) &&
+					game.get(move.to).color !== game.get(square).color
+						? 'radial-gradient(circle, rgba(0,0,0,.1) 85%, transparent 85%)'
+						: 'radial-gradient(circle, rgba(0,0,0,.1) 25%, transparent 25%)',
+				borderRadius: '50%',
+			};
+			return move;
+		});
+		newSquares[square] = {
+			background: 'rgba(255, 255, 0, 0.4)',
+		};
+		setOptionSquares(newSquares);
+	};
+
 	return (
 		<div className="background">
 			<Header />
 			<div className="board">
-				<Chessboard position={game.fen()} onPieceDrop={onDrop} />
+				<Chessboard
+					position={game.fen()}
+					boardWidth={600}
+					animationDuration={200}
+					onPieceDrop={onDrop}
+					onSquareClick={onSquareClick}
+					onSquareRightClick={onSquareRightClick}
+					onMouseOverSquare={onMouseOverSquare}
+					onMouseOutSquare={onMouseOutSquare}
+					customBoardStyle={{
+						borderRadius: '4px',
+						boxShadow: '0 5px 15px rgba(0, 0, 0, 0.5)',
+					}}
+					customLightSquareStyle={{ backgroundColor: '#ebecd0' }}
+					customDarkSquareStyle={{ backgroundColor: '#779756' }}
+					customSquareStyles={{
+						...moveSquares,
+						...optionSquares,
+						...rightClickedSquares,
+					}}
+				/>
 				<button onClick={handleClick}>Reset</button>
 			</div>
 		</div>
