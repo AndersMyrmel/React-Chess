@@ -26,7 +26,7 @@ export const HomeComponent = () => {
 					<img
 						id="transparentIllustration"
 						alt="Chess board illustration"
-						src={require('../images/transparent_pieces.png')}
+						src={require('../images/transparent_board.png')}
 					></img>
 				</div>
 			</div>
@@ -56,7 +56,7 @@ export const HomeComponent = () => {
 						children={
 							<div className="paperChildren">
 								<h1 id="customStreakText">Custom Streak</h1>
-								<h2 id="createYourOwnText">Create your own puzzle streak</h2>
+								<p id="createYourOwnText">Create your own puzzle streak</p>
 								<h1 id="playText">Play </h1>
 								<h1 id="arrowSymbol">➜</h1>
 								<img
@@ -133,7 +133,7 @@ export const HomeComponent = () => {
 						}}
 						children={
 							<div className="paperChildren">
-								<h1 id="forceMateText">Forced Mate</h1>
+								<h1 id="playLozzaText">Play Lozza</h1>
 								<img
 									id="bottomRightIllustration"
 									alt="Chess game illustration"
