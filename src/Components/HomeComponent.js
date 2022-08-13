@@ -12,6 +12,24 @@ export const HomeComponent = () => {
 	return (
 		<div className="background">
 			<Header />
+			<div className="titleSection">
+				<div className="titleRight">
+					<h1 id="mainText">
+						Publishing Platform for Developers and Tech Enthusiast
+					</h1>
+					<p id="secondaryText">
+						Create beautiful, independent online publication by writing faster
+						and better than you ever have before
+					</p>
+				</div>
+				<div className="titleRight">
+					<img
+						id="transparentIllustration"
+						alt="Chess board illustration"
+						src={require('../images/transparent_pieces.png')}
+					></img>
+				</div>
+			</div>
 			<div id="topRow">
 				<Box
 					sx={{
