@@ -3,8 +3,52 @@
 	height: 100%;
 }
 
+.titleSection {
+	max-width: 1180px;
+	display: flex;
+	justify-content: space-around;
+	margin: 0 20px;
+	padding: 60px 0;
+}
+
+.titleLeft {
+	display: block;
+}
+
+.titleRight {
+	display: block;
+}
+
+#mainText {
+	font-size: clamp(1rem, 5vw, 3rem);
+	margin: 0;
+	color: white;
+	margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+#secondaryText {
+	font-size: clamp(0.5rem, 4vw, 1.3rem);
+	margin: 0;
+	color: #8f8f8f;
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: 500;
+}
+
+#transparentIllustration {
+	max-height: 300px;
+	margin-top: 30px;
+	margin-right: 50px;
+}
+
 #topRow {
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 #bottomRow {
@@ -18,7 +62,7 @@
 #customStreakText {
 	position: relative;
 	font-size: 45px;
-	color: #d1d5db;
+	color: #fafafa;
 	left: 120px;
 	top: 50px;
 }
@@ -29,12 +73,13 @@
 	color: #cbd5e0;
 	left: 120px;
 	top: 30px;
+	font-weight: 400;
 }
 
 #playText {
 	position: relative;
 	font-size: 30px;
-	color: #d1d5db;
+	color: #cbd5e0;
 	left: 120px;
 	top: 320px;
 }
@@ -42,7 +87,7 @@
 #arrowSymbol {
 	position: relative;
 	font-size: 30px;
-	color: #d1d5db;
+	color: #cbd5e0;
 	left: 195px;
 	top: 263px;
 	transition-duration: 0.1s;
@@ -64,7 +109,7 @@
 #chessVisionText {
 	position: relative;
 	font-size: 35px;
-	color: #d1d5db;
+	color: #fafafa;
 	left: 80px;
 	top: 40px;
 	word-spacing: 9999999px;
@@ -78,10 +123,10 @@
 	border-radius: 10px;
 }
 
-#forceMateText {
+#playLozzaText {
 	position: relative;
 	font-size: 35px;
-	color: #d1d5db;
+	color: #fafafa;
 	left: 80px;
 	top: 40px;
 	word-spacing: 9999999px;

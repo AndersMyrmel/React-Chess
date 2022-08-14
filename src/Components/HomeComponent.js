@@ -12,6 +12,24 @@ export const HomeComponent = () => {
 	return (
 		<div className="background">
 			<Header />
+			<div className="titleSection">
+				<div className="titleRight">
+					<h1 id="mainText">
+						Publishing Platform for Developers and Tech Enthusiast
+					</h1>
+					<p id="secondaryText">
+						Create beautiful, independent online publication by writing faster
+						and better than you ever have before
+					</p>
+				</div>
+				<div className="titleRight">
+					<img
+						id="transparentIllustration"
+						alt="Chess board illustration"
+						src={require('../images/transparent_board.png')}
+					></img>
+				</div>
+			</div>
 			<div id="topRow">
 				<Box
 					sx={{
@@ -38,7 +56,7 @@ export const HomeComponent = () => {
 						children={
 							<div className="paperChildren">
 								<h1 id="customStreakText">Custom Streak</h1>
-								<h2 id="createYourOwnText">Create your own puzzle streak</h2>
+								<p id="createYourOwnText">Create your own puzzle streak</p>
 								<h1 id="playText">Play </h1>
 								<h1 id="arrowSymbol">➜</h1>
 								<img
@@ -115,7 +133,7 @@ export const HomeComponent = () => {
 						}}
 						children={
 							<div className="paperChildren">
-								<h1 id="forceMateText">Forced Mate</h1>
+								<h1 id="playLozzaText">Play Lozza</h1>
 								<img
 									id="bottomRightIllustration"
 									alt="Chess game illustration"
