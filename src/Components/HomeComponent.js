@@ -106,6 +106,9 @@ export const HomeComponent = () => {
 								></img>
 							</div>
 						}
+						onClick={() => {
+							routeChange(navigate, `/guess-the-elo`);
+						}}
 						elevation={6}
 					/>
 				</Box>
