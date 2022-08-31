@@ -1,6 +1,6 @@
 # React chess
 
-A chess game made with react-chessboard and Chess.js
+A chess website with various functionalities made with react-chessboard, Chess.js and Leela chess engine.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
