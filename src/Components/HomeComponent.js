@@ -15,11 +15,11 @@ export const HomeComponent = () => {
 			<div className="titleSection">
 				<div className="titleRight">
 					<h1 id="mainText">
-						Publishing Platform for Developers and Tech Enthusiast
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit
 					</h1>
 					<p id="secondaryText">
-						Create beautiful, independent online publication by writing faster
-						and better than you ever have before
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+						accusantium doloremque laudantium
 					</p>
 				</div>
 				<div className="titleRight">
@@ -106,6 +106,9 @@ export const HomeComponent = () => {
 								></img>
 							</div>
 						}
+						onClick={() => {
+							routeChange(navigate, `/guess-the-elo`);
+						}}
 						elevation={6}
 					/>
 				</Box>
