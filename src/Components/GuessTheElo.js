@@ -38,8 +38,6 @@ export const GuessTheElo = () => {
 	const reset = () => {
 		game.reset();
 		setGame(game);
-		//game.fen('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR');
-		//setGame(game);
 	};
 
 	const previousMove = () => {
