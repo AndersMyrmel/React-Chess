@@ -3,7 +3,9 @@ import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
 import { getGameById } from '../Services/getGameById';
 import { getPgnArray } from '../Services/getPgnArray';
+import { Guess } from './Guess';
 import games from '../Database/Games.txt';
+import '../Styles/GuessTheElo.css';
 
 export const GuessTheElo = () => {
 	const [listOfGames, setListOfGames] = useState();
@@ -51,8 +53,8 @@ export const GuessTheElo = () => {
 	};
 
 	return (
-		<div className="background">
-			<div className="board">
+		<div className="gteBody">
+			<div className="gteBoard">
 				<Chessboard
 					position={game.fen()}
 					boardWidth={600}
@@ -63,6 +65,7 @@ export const GuessTheElo = () => {
 				<button onClick={previousMove}>Previous Move</button>
 				<button onClick={nextMove}>Next Move</button>
 			</div>
+			<Guess />
 		</div>
 	);
 };

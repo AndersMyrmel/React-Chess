@@ -1,0 +1,7 @@
+.gteBody {
+	display: flex;
+	justify-content: flex-end;
+	background-color: #202020;
+	min-height: 100vh;
+	padding-top: 100px;
+}

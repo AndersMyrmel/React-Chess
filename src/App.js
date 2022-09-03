@@ -4,6 +4,7 @@ import { HomeComponent } from './Components/HomeComponent.js';
 import { CustomStreak } from './Components/CustomStreak.js';
 import { InputFen } from './Components/InputFen.js';
 import { GuessTheElo } from './Components/GuessTheElo.js';
+import { Guess } from './Components/Guess.js';
 import './Styles/App.css';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
 				element={<CustomStreak fenList={fenList} />}
 			/>
 			<Route path="guess-the-elo" element={<GuessTheElo />} />
+			<Route path="guess" element={<Guess />} />
 		</Routes>
 	);
 };

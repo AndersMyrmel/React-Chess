@@ -1,0 +1,34 @@
+.guessBody {
+	margin: 15%;
+	padding: 10px;
+	border-radius: 25px;
+	height: 100%;
+	min-height: 280px;
+	max-width: 650px;
+	background-color: #272522;
+	color: white;
+	text-align: center;
+}
+
+#eloLabel {
+	font-size: 25px;
+	font-weight: 650;
+}
+
+#eloInput {
+	min-height: 25px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#eloInputButton {
+	background-color: #7fa650;
+	color: white;
+	width: 80px;
+	height: 30px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 14px;
+}
