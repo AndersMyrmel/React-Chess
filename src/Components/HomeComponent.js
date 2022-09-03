@@ -98,7 +98,7 @@ export const HomeComponent = () => {
 						}}
 						children={
 							<div className="paperChildren">
-								<h1 id="chessVisionText">Chess Vision</h1>
+								<h1 id="chessVisionText">Guess The Elo</h1>
 								<img
 									id="bottomLeftIllustration"
 									alt="Chess pieces illustration"
@@ -144,6 +144,9 @@ export const HomeComponent = () => {
 								></img>
 							</div>
 						}
+						onClick={() => {
+							routeChange(navigate, `/guess`);
+						}}
 						elevation={6}
 					/>
 				</Box>

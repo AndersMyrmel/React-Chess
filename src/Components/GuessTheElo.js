@@ -3,7 +3,10 @@ import { Chessboard } from 'react-chessboard';
 import { Chess } from 'chess.js';
 import { getGameById } from '../Services/getGameById';
 import { getPgnArray } from '../Services/getPgnArray';
+import { Header } from '../Components/Header.js';
+import { Guess } from './Guess';
 import games from '../Database/Games.txt';
+import '../Styles/GuessTheElo.css';
 
 export const GuessTheElo = () => {
 	const [listOfGames, setListOfGames] = useState();
@@ -52,16 +55,20 @@ export const GuessTheElo = () => {
 
 	return (
 		<div className="background">
-			<div className="board">
-				<Chessboard
-					position={game.fen()}
-					boardWidth={600}
-					animationDuration={200}
-				/>
-				<button onClick={getRandomGame}>Get game</button>
-				<button onClick={reset}>Reset</button>
-				<button onClick={previousMove}>Previous Move</button>
-				<button onClick={nextMove}>Next Move</button>
+			<Header />
+			<div className="gteBody">
+				<div className="gteBoard">
+					<Chessboard
+						position={game.fen()}
+						boardWidth={600}
+						animationDuration={200}
+					/>
+					<button onClick={getRandomGame}>Get game</button>
+					<button onClick={reset}>Reset</button>
+					<button onClick={previousMove}>Previous Move</button>
+					<button onClick={nextMove}>Next Move</button>
+				</div>
+				<Guess />
 			</div>
 		</div>
 	);
